@@ -1,122 +1,43 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const contentContainer = document.getElementById('contenido');
+// Cargar el JSON y procesar la información
+fetch('tema1.json')
+  .then(response => response.json())
+  .then(data => {
+    const unidad = data.unidad;
+    const tema = data.tema;
+    let currentStep = 0;
 
-  if (contentContainer) {
-    const tema = contentContainer.getAttribute('data-tema');
-
-    mostrarLoader(true);
-
-    fetch(`${tema}.json`)
-      .then(response => response.json())
-      .then(data => {
-        mostrarLoader(false);
-        renderizarContenido(data);
-      })
-      .catch(error => {
-        mostrarLoader(false);
-        contentContainer.innerHTML = "<p>Error cargando el contenido.</p>";
-        console.error(error);
-      });
-  }
-});
-
-function mostrarLoader(mostrar) {
-  const loader = document.getElementById('loader');
-  if (loader) {
-    loader.style.display = mostrar ? 'block' : 'none';
-  }
-}
-
-function renderizarContenido(data) {
-  const container = document.getElementById('contenido');
-  container.innerHTML = '';
-
-  data.secciones.forEach(seccion => {
-    switch (seccion.tipo) {
-      case 'teoria':
-        container.innerHTML += `<section><h2>${seccion.titulo}</h2><div>${seccion.contenido}</div></section>`;
-        break;
-      case 'pregunta':
-        renderizarPregunta(seccion, container);
-        break;
-      case 'ejemplo':
-        container.innerHTML += `<section><h2>${seccion.titulo}</h2><div>${seccion.contenido}</div></section>`;
-        break;
-      case 'generador':
-        renderizarGenerador(seccion, container);
-        break;
-      case 'evaluacion-fin':
-        renderizarFinal(seccion, container);
-        break;
+    function showContent(content) {
+      document.getElementById('content').innerHTML = content;
     }
+
+    function showQuestion(question) {
+      let questionHtml = `<h2>${question.pregunta}</h2>`;
+      question.opciones.forEach((opcion, index) => {
+        questionHtml += `<button class="option" onclick="checkAnswer(${index}, ${question.respuesta_correcta})">${opcion}</button>`;
+      });
+      document.getElementById('content').innerHTML = questionHtml;
+    }
+
+    function checkAnswer(selected, correct) {
+      if (selected === correct) {
+        alert('¡Respuesta correcta!');
+      } else {
+        alert(question.retroalimentacion);
+      }
+    }
+
+    function loadNextStep() {
+      const contentType = data.contenido[currentStep].tipo;
+
+      if (contentType === 'teoria') {
+        let theory = data.contenido[currentStep].contenido.join('<br>');
+        showContent(theory);
+      } else if (contentType === 'pregunta') {
+        showQuestion(data.contenido[currentStep]);
+      }
+
+      currentStep++;
+    }
+
+    loadNextStep();
   });
-}
-
-function renderizarPregunta(seccion, container) {
-  const preguntaHTML = `
-    <section>
-      <h3>Pregunta</h3>
-      <p>${seccion.pregunta}</p>
-      ${seccion.subtipo === 'falso-verdadero' ? `
-        <button onclick="verificarRespuesta(this, '${seccion.respuestaCorrecta}', '${seccion.retroalimentacion}')">Verdadero</button>
-        <button onclick="verificarRespuesta(this, '${seccion.respuestaCorrecta}', '${seccion.retroalimentacion}')">Falso</button>
-      ` : `
-        ${seccion.opciones.map((opcion, i) => `
-          <button onclick="verificarRespuesta(this, '${seccion.opciones[seccion.respuestaCorrecta]}', '${seccion.retroalimentacion}')">${opcion}</button>
-        `).join('')}
-      `}
-    </section>
-  `;
-  container.innerHTML += preguntaHTML;
-}
-
-function verificarRespuesta(boton, correcta, retroalimentacion) {
-  if (boton.innerText === correcta) {
-    alert("¡Correcto! " + retroalimentacion);
-  } else {
-    alert("Incorrecto. " + retroalimentacion);
-  }
-}
-
-function renderizarGenerador(seccion, container) {
-  const generadorHTML = `
-    <section>
-      <h2>${seccion.titulo}</h2>
-      <p>${seccion.contenido}</p>
-      <button onclick="generarEjemplo()">Generar un nuevo ejemplo</button>
-      <div id="ejemplo-generado"></div>
-    </section>
-  `;
-  container.innerHTML += generadorHTML;
-}
-
-function generarEjemplo() {
-  const ejemplos = [
-    { enunciado: "dy/dx = 3y", solucion: "Separando variables y resolviendo: y = Ce^(3x)." },
-    { enunciado: "dy/dx = x²", solucion: "Integrando directamente: y = (1/3)x³ + C." },
-    { enunciado: "dy/dx = sin(x)", solucion: "Integrando: y = -cos(x) + C." }
-  ];
-
-  const ejemplo = ejemplos[Math.floor(Math.random() * ejemplos.length)];
-  const div = document.getElementById('ejemplo-generado');
-  div.innerHTML = `
-    <p><strong>Problema:</strong> ${ejemplo.enunciado}</p>
-    <p><strong>Solución paso a paso:</strong> ${ejemplo.solucion}</p>
-    <p>¿Quieres resolver otro?</p>
-    <button onclick="generarEjemplo()">Sí, otro ejemplo</button>
-    <button onclick="finalizarGenerador()">No, continuar</button>
-  `;
-}
-
-function finalizarGenerador() {
-  location.reload(); // Simplemente recarga para mostrar el siguiente contenido
-}
-
-function renderizarFinal(seccion, container) {
-  let finalHTML = `<section><h2>${seccion.titulo}</h2><div>${seccion.contenido}</div><ul>`;
-  seccion.materialComplementario.forEach(ref => {
-    finalHTML += `<li><a href="${ref.url}" target="_blank">${ref.texto}</a></li>`;
-  });
-  finalHTML += '</ul></section>';
-  container.innerHTML += finalHTML;
-}
