@@ -1,0 +1,79 @@
+{
+  "secciones": [
+    {
+      "tipo": "teoria",
+      "titulo": "Introducción a las Ecuaciones Diferenciales",
+      "contenido": "<p>Una ecuación diferencial ordinaria (EDO) involucra derivadas de una función desconocida respecto a una única variable independiente...</p>"
+    },
+    {
+      "tipo": "pregunta",
+      "subtipo": "falso-verdadero",
+      "pregunta": "¿Una ecuación de primer orden puede ser no lineal?",
+      "respuestaCorrecta": "Verdadero",
+      "retroalimentacion": "Correcto. Existen EDOs de primer orden no lineales, como y' = y²."
+    },
+    {
+      "tipo": "teoria",
+      "titulo": "Clasificación y Ejemplos de EDOs",
+      "contenido": "<p>Las ecuaciones diferenciales se clasifican según su orden, linealidad, homogeneidad y más...</p>"
+    },
+    {
+      "tipo": "pregunta",
+      "subtipo": "falso-verdadero",
+      "pregunta": "¿Toda ecuación diferencial de segundo orden es lineal?",
+      "respuestaCorrecta": "Falso",
+      "retroalimentacion": "Correcto. Una ecuación de segundo orden puede ser no lineal, por ejemplo y'' + y² = 0."
+    },
+    {
+      "tipo": "ejemplo",
+      "titulo": "Ejemplo 1: Separación de variables",
+      "contenido": "<p>Resolver: dy/dx = 2y. Separando variables: dy/y = 2 dx. Integrando: ln|y| = 2x + C, por tanto, y = Ce^(2x).</p>"
+    },
+    {
+      "tipo": "ejemplo",
+      "titulo": "Ejemplo 2: Integración directa",
+      "contenido": "<p>Resolver: dy/dx = x. Integrando directamente: y = (1/2)x² + C.</p>"
+    },
+    {
+      "tipo": "pregunta",
+      "subtipo": "opcion-multiple",
+      "pregunta": "¿Cuál es la solución general de dy/dx = ky?",
+      "opciones": [
+        "y = Ce^(kx)",
+        "y = Cx^k",
+        "y = kx + C",
+        "y = ln(kx)"
+      ],
+      "respuestaCorrecta": 0,
+      "retroalimentacion": "La solución general de dy/dx = ky es y = Ce^(kx)."
+    },
+    {
+      "tipo": "pregunta",
+      "subtipo": "opcion-multiple",
+      "pregunta": "¿Qué método es más adecuado para resolver dy/dx = (2x)/(1+y²)?",
+      "opciones": [
+        "Separación de variables",
+        "Integración por partes",
+        "Factor integrante",
+        "Cambio de variable"
+      ],
+      "respuestaCorrecta": 0,
+      "retroalimentacion": "Es un caso de separación de variables: (1+y²)dy = 2x dx."
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Generador de EDOs paramétricas",
+      "contenido": "<p>Haz clic en 'Generar' para obtener un nuevo ejemplo de ecuación diferencial. Recibirás su solución paso a paso. Al finalizar, puedes optar por generar otro ejemplo o terminar esta sección.</p>"
+    },
+    {
+      "tipo": "evaluacion-fin",
+      "titulo": "¡Buen trabajo!",
+      "contenido": "<p>Has completado la sección de práctica. Puedes revisar de nuevo los temas, consultar materiales recomendados o pasar a la evaluación formal.</p>",
+      "materialComplementario": [
+        {"texto": "Ecuaciones Diferenciales: Teoría y Aplicaciones", "url": "https://es.wikipedia.org/wiki/Ecuaci%C3%B3n_diferencial_ordinaria"},
+        {"texto": "Curso interactivo de EDOs en Khan Academy", "url": "https://es.khanacademy.org/math/differential-equations"}
+      ],
+      "opciones": ["Revisar teoría", "Ir a la evaluación"]
+    }
+  ]
+}
