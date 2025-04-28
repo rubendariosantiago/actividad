@@ -3,15 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curso: Ecuaciones Diferenciales</title>
+  <title>Curso Interactivo</title>
+  
+  <!-- Cargar CSS de estilo -->
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Cargar MathJax para renderizar matemáticas -->
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
 </head>
 <body>
-  <h1>Unidad: Ecuaciones Diferenciales de Primer Orden</h1>
-  <h2>Tema: Métodos básicos de solución</h2>
-  <div id="content">
-    <!-- Aquí se cargarán las preguntas, teorías y ejemplos -->
+  <div class="container">
+    <!-- Contenedor para mostrar el contenido -->
+    <div id="contentContainer" class="content"></div>
+
+    <!-- Contenedor para mostrar el informe final -->
+    <div id="finalReportContainer" class="content"></div>
+
+    <!-- Botón para descargar el informe -->
+    <button id="downloadButton">Descargar Informe</button>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
