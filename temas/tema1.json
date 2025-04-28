@@ -1,79 +1,145 @@
 {
-  "secciones": [
+  "unidad": "Ecuaciones Diferenciales de Primer Orden",
+  "tema": "Métodos básicos de solución",
+  "contenido": [
     {
       "tipo": "teoria",
-      "titulo": "Introducción a las Ecuaciones Diferenciales",
-      "contenido": "<p>Una ecuación diferencial ordinaria (EDO) involucra derivadas de una función desconocida respecto a una única variable independiente...</p>"
+      "titulo": "Introducción a las Ecuaciones Diferenciales de Primer Orden",
+      "contenido": [
+        "Una ecuación diferencial de primer orden involucra derivadas de primer orden de una función desconocida. Su forma general es: $$F(x, y, y') = 0$$.",
+        "Un caso particular es la ecuación diferencial lineal de primer orden: $$y' + p(x)y = q(x)$$, donde $$p(x)$$ y $$q(x)$$ son funciones continuas."
+      ]
     },
     {
       "tipo": "pregunta",
-      "subtipo": "falso-verdadero",
-      "pregunta": "¿Una ecuación de primer orden puede ser no lineal?",
-      "respuestaCorrecta": "Verdadero",
-      "retroalimentacion": "Correcto. Existen EDOs de primer orden no lineales, como y' = y²."
+      "formato": "falso-verdadero",
+      "pregunta": "Una ecuación diferencial de primer orden puede contener derivadas de orden dos o superiores.",
+      "respuesta_correcta": false,
+      "retroalimentacion": "Incorrecto. Las ecuaciones de primer orden involucran únicamente derivadas de primer orden."
     },
     {
       "tipo": "teoria",
-      "titulo": "Clasificación y Ejemplos de EDOs",
-      "contenido": "<p>Las ecuaciones diferenciales se clasifican según su orden, linealidad, homogeneidad y más...</p>"
+      "titulo": "Métodos Básicos de Solución",
+      "contenido": [
+        "Uno de los métodos básicos de solución de ecuaciones diferenciales de primer orden es el uso del factor integrante.",
+        "El factor integrante permite convertir una ecuación diferencial no exacta en una exacta para su resolución."
+      ]
     },
     {
       "tipo": "pregunta",
-      "subtipo": "falso-verdadero",
-      "pregunta": "¿Toda ecuación diferencial de segundo orden es lineal?",
-      "respuestaCorrecta": "Falso",
-      "retroalimentacion": "Correcto. Una ecuación de segundo orden puede ser no lineal, por ejemplo y'' + y² = 0."
+      "formato": "falso-verdadero",
+      "pregunta": "El método del factor integrante es aplicable solo a ecuaciones lineales de primer orden.",
+      "respuesta_correcta": true,
+      "retroalimentacion": "Correcto. El método del factor integrante se utiliza principalmente en ecuaciones lineales de primer orden."
     },
     {
       "tipo": "ejemplo",
-      "titulo": "Ejemplo 1: Separación de variables",
-      "contenido": "<p>Resolver: dy/dx = 2y. Separando variables: dy/y = 2 dx. Integrando: ln|y| = 2x + C, por tanto, y = Ce^(2x).</p>"
+      "titulo": "Ejemplo 1: Ecuación Lineal",
+      "contenido": [
+        "Resolver $$ y' + 2y = 4x + 1 $$ con condición inicial $$ y(0) = 3 $$.",
+        "Calculamos el factor integrante: $$\mu(x) = e^{\int 2 dx} = e^{2x}$$.",
+        "Multiplicamos por el factor integrante y resolvemos: ...",
+        "Solución final: $$ y(x) = ... $$"
+      ],
+      "imagen": "tema1_fig1.png"
     },
     {
       "tipo": "ejemplo",
-      "titulo": "Ejemplo 2: Integración directa",
-      "contenido": "<p>Resolver: dy/dx = x. Integrando directamente: y = (1/2)x² + C.</p>"
+      "titulo": "Ejemplo 2: Ecuación Exponencial",
+      "contenido": [
+        "Resolver $$ y' + y = e^x $$ con condición inicial $$ y(0) = 1 $$.",
+        "Aplicamos el factor integrante y procedemos con la solución."
+      ],
+      "imagen": "tema1_fig2.png"
     },
     {
       "tipo": "pregunta",
-      "subtipo": "opcion-multiple",
-      "pregunta": "¿Cuál es la solución general de dy/dx = ky?",
-      "opciones": [
-        "y = Ce^(kx)",
-        "y = Cx^k",
-        "y = kx + C",
-        "y = ln(kx)"
+      "formato": "opcion-multiple-parametrizada",
+      "pregunta": "Selecciona la solución correcta para la ecuación: $$ y' + {a}y = {b}x + {c} $$",
+      "steps": [
+        "Paso 1: Identificar la ecuación como lineal de primer orden.",
+        "Paso 2: Encontrar el factor integrante: $$\mu(x) = e^{\int a dx} = e^{ax}$$.",
+        "Paso 3: Multiplicar ambos lados de la ecuación por el factor integrante.",
+        "Paso 4: Resolver la ecuación resultante y aplicar la condición inicial.",
+        "Paso 5: Obtener la solución general y particular."
       ],
-      "respuestaCorrecta": 0,
-      "retroalimentacion": "La solución general de dy/dx = ky es y = Ce^(kx)."
+      "opciones": [
+        "{solucionCorrecta}",
+        "{solucionIncorrecta1}",
+        "{solucionIncorrecta2}",
+        "{solucionIncorrecta3}"
+      ],
+      "respuesta_correcta": 0,
+      "retroalimentacion": "Si seleccionaste incorrectamente, revisa los pasos de solución y asegúrate de seguir la técnica adecuada para la ecuación dada."
+    },
+    {
+      "tipo": "ejemplosInteractivos",
+      "descripcion": "Resuelve diferentes tipos de ecuaciones diferenciales parametrizadas.",
+      "modelos": [
+        {
+          "tipo": "lineal",
+          "ecuacion": "y' + {a}y = {b}x + {c}",
+          "condicionInicial": "y(0) = {d}",
+          "restricciones": "a, b, c \\neq 0, \\pm1",
+          "steps": [
+            "Paso 1: Identificar la ecuación como lineal de primer orden.",
+            "Paso 2: Encontrar el factor integrante: $$\mu(x) = e^{\int a dx} = e^{ax}$$.",
+            "Paso 3: Multiplicar ambos lados de la ecuación por el factor integrante.",
+            "Paso 4: Resolver la ecuación resultante y aplicar la condición inicial.",
+            "Paso 5: Obtener la solución general y particular."
+          ]
+        },
+        {
+          "tipo": "exponencial",
+          "ecuacion": "y' + {a}y = {b}e^{c x}",
+          "condicionInicial": "y(0) = {d}",
+          "restricciones": "a, b, c \\neq 0, \\pm1; c \\neq -a",
+          "steps": [
+            "Paso 1: Identificar la ecuación como de tipo exponencial.",
+            "Paso 2: Encontrar el factor integrante: $$\mu(x) = e^{\int a dx} = e^{ax}$$.",
+            "Paso 3: Multiplicar ambos lados de la ecuación por el factor integrante.",
+            "Paso 4: Resolver la ecuación resultante y aplicar la condición inicial.",
+            "Paso 5: Obtener la solución general y particular."
+          ]
+        },
+        {
+          "tipo": "coeficiente-variable",
+          "ecuacion": "y' + \\frac{a}{x}y = bx",
+          "condicionInicial": "y(1) = {d}",
+          "restricciones": "a > 1; a, b \\neq 0,\\pm1",
+          "steps": [
+            "Paso 1: Identificar la ecuación con coeficiente variable.",
+            "Paso 2: Encontrar el factor integrante: $$\mu(x) = e^{\int \\frac{a}{x} dx} = x^a$$.",
+            "Paso 3: Multiplicar ambos lados de la ecuación por el factor integrante.",
+            "Paso 4: Resolver la ecuación resultante y aplicar la condición inicial.",
+            "Paso 5: Obtener la solución general y particular."
+          ]
+        }
+      ],
+      "parametros": {
+        "a": [2, 3, 4, 5],
+        "b": [2, -2, 3, -3],
+        "c": [2, -2, 3, -3],
+        "d": [-2, 2, 3, -3]
+      }
     },
     {
       "tipo": "pregunta",
-      "subtipo": "opcion-multiple",
-      "pregunta": "¿Qué método es más adecuado para resolver dy/dx = (2x)/(1+y²)?",
+      "formato": "opcion-multiple-final",
+      "pregunta": "Selecciona la solución correcta para la ecuación: $$ {ecuacion} $$",
       "opciones": [
-        "Separación de variables",
-        "Integración por partes",
-        "Factor integrante",
-        "Cambio de variable"
+        "{solucionCorrecta}",
+        "{solucionIncorrecta1}",
+        "{solucionIncorrecta2}",
+        "{solucionIncorrecta3}"
       ],
-      "respuestaCorrecta": 0,
-      "retroalimentacion": "Es un caso de separación de variables: (1+y²)dy = 2x dx."
+      "respuesta_correcta": 0,
+      "retroalimentacion": "¡Excelente! Has completado la actividad. Sigue practicando."
     },
     {
-      "tipo": "generador",
-      "titulo": "Generador de EDOs paramétricas",
-      "contenido": "<p>Haz clic en 'Generar' para obtener un nuevo ejemplo de ecuación diferencial. Recibirás su solución paso a paso. Al finalizar, puedes optar por generar otro ejemplo o terminar esta sección.</p>"
-    },
-    {
-      "tipo": "evaluacion-fin",
-      "titulo": "¡Buen trabajo!",
-      "contenido": "<p>Has completado la sección de práctica. Puedes revisar de nuevo los temas, consultar materiales recomendados o pasar a la evaluación formal.</p>",
-      "materialComplementario": [
-        {"texto": "Ecuaciones Diferenciales: Teoría y Aplicaciones", "url": "https://es.wikipedia.org/wiki/Ecuaci%C3%B3n_diferencial_ordinaria"},
-        {"texto": "Curso interactivo de EDOs en Khan Academy", "url": "https://es.khanacademy.org/math/differential-equations"}
-      ],
-      "opciones": ["Revisar teoría", "Ir a la evaluación"]
+      "tipo": "fin_de_actividad",
+      "mensaje": "¡Felicidades! Has completado la actividad. Recuerda que la práctica constante es clave para dominar los conceptos de ecuaciones diferenciales."
     }
   ]
 }
+
