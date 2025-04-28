@@ -1,18 +1,31 @@
-// Este script servirá para cargar dinámicamente el contenido de cada tema
 document.addEventListener('DOMContentLoaded', () => {
   const contentContainer = document.getElementById('contenido');
 
   if (contentContainer) {
     const tema = contentContainer.getAttribute('data-tema');
+
+    mostrarLoader(true);
+
     fetch(`${tema}.json`)
       .then(response => response.json())
-      .then(data => renderizarContenido(data))
+      .then(data => {
+        mostrarLoader(false);
+        renderizarContenido(data);
+      })
       .catch(error => {
+        mostrarLoader(false);
         contentContainer.innerHTML = "<p>Error cargando el contenido.</p>";
         console.error(error);
       });
   }
 });
+
+function mostrarLoader(mostrar) {
+  const loader = document.getElementById('loader');
+  if (loader) {
+    loader.style.display = mostrar ? 'block' : 'none';
+  }
+}
 
 function renderizarContenido(data) {
   const container = document.getElementById('contenido');
